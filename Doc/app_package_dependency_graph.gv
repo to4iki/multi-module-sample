@@ -1,0 +1,37 @@
+digraph g {
+  layout=dot
+  rankdir=TB
+
+  subgraph cluster_package_AppPackage {
+    label="AppPackage"
+    packageProduct_AppFeature [label="AppFeature", shape=ellipse]
+    target_AppFeature [label="AppFeature", shape=box]
+    packageProduct_WidgetFeature [label="WidgetFeature", shape=ellipse]
+    target_WidgetFeature [label="WidgetFeature", shape=box]
+    target_HomeFeature [label="HomeFeature", shape=box]
+    target_SettingFeature [label="SettingFeature", shape=box]
+    target_WalkthroughFeature [label="WalkthroughFeature", shape=box]
+    target_DesignSystem [label="DesignSystem", shape=box]
+    target_Environment [label="Environment", shape=box]
+    target_Data [label="Data", shape=box]
+    target_UICore [label="UICore", shape=box]
+    target_UserDefaultsCore [label="UserDefaultsCore", shape=box]
+    target_APICore [label="APICore", shape=box]
+  }
+
+  packageProduct_AppFeature -> target_AppFeature
+  packageProduct_WidgetFeature -> target_WidgetFeature
+  target_AppFeature -> target_HomeFeature
+  target_AppFeature -> target_SettingFeature
+  target_AppFeature -> target_WalkthroughFeature
+  target_HomeFeature -> target_Environment
+  target_HomeFeature -> target_Data
+  target_HomeFeature -> target_UICore
+  target_SettingFeature -> target_Environment
+  target_SettingFeature -> target_Data
+  target_WalkthroughFeature -> target_DesignSystem
+  target_WalkthroughFeature -> target_Environment
+  target_WalkthroughFeature -> target_Data
+  target_Data -> target_UserDefaultsCore
+  target_Data -> target_APICore
+}

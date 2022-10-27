@@ -1,0 +1,15 @@
+import Environment
+
+extension AppEnvironment: EnvironmentType {
+  public func resolve<Descriptor: TypedDescriptor>(_ descriptor: Descriptor) -> Descriptor.Output {
+    switch descriptor {
+    {% for type in types.implementing.TypedDescriptor|struct %}
+    case let {{ type.name | replace:"ViewDescriptor.","" | lowerFirstLetter }} as {{ type.name }}:
+      return resolveConcrete({{ type.name | replace:"ViewDescriptor.","" | lowerFirstLetter }}) as! Descriptor.Output
+    {% endfor %}
+    default:
+      // unavailable
+      fatalError("Unknown descriptor!")
+    }
+  }
+}

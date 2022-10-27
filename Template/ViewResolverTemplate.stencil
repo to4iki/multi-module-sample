@@ -1,0 +1,6 @@
+public protocol ViewResolver {
+  {% for type in types.implementing.TypedDescriptor|struct %}
+  func resolveConcrete(_ descriptor: {{ type.name }})
+    -> {{ type.name }}.Output
+  {% endfor %}
+}

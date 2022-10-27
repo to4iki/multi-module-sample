@@ -1,0 +1,13 @@
+input_dir: Resources
+output_dir: ${DERIVED_SOURCES_DIR}
+
+xcassets:
+  inputs:
+    - Color.xcassets
+  outputs:
+    - templateName: swift5
+      output: DesignSystemColors.swift
+      params:
+        enumName: ColorStyle
+        forceProvidesNamespaces: true 
+        publicAccess: true
